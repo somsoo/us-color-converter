@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://us-color-converter.enjoy-onepage.com/sitemap.xml
