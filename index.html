@@ -1,308 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/favicon.ico">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check</title>
-    <meta name="description" content="Convert colors instantly between HEX, RGB, HSL, and CMYK formats with real-time preview, copy codes, and contrast ratio check.">
-    <link rel="canonical" href="https://us-color-converter.enjoy-onepage.com/">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
-    <meta property="og:description" content="Convert colors instantly between HEX, RGB, HSL, and CMYK formats with real-time preview, copy codes, and contrast ratio check.">
-    <meta property="og:url" content="https://us-color-converter.enjoy-onepage.com/">
-    <meta property="og:site_name" content="Color Space Converter">
-    <meta property="og:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
-    <meta name="twitter:description" content="Convert colors instantly between HEX, RGB, HSL, and CMYK formats with real-time preview, copy codes, and contrast ratio check.">
-    <meta name="twitter:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
-
-    <!-- Schema.org WebApplication -->
-    <script type="application/ld+json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check</title>
+<meta name="description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://us-color-converter.enjoy-onepage.com/">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Color Converter &amp; Contrast Checker">
+<meta property="og:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
+<meta property="og:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<meta property="og:url" content="https://us-color-converter.enjoy-onepage.com/">
+<meta property="og:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
+<meta name="twitter:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<meta name="twitter:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Color Converter RSS" href="https://us-color-converter.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://us-color-converter.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Color Space Converter",
+      "@id": "https://us-color-converter.enjoy-onepage.com/#webapp",
+      "name": "Color Converter & Contrast Checker",
       "url": "https://us-color-converter.enjoy-onepage.com/",
-      "description": "Convert colors instantly between HEX, RGB, HSL, and CMYK formats with real-time preview, copy codes, and contrast ratio check.",
       "applicationCategory": "DesignApplication",
       "operatingSystem": "All",
-      "inLanguage": "en-US",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "inLanguage": "en",
+      "description": "A free color converter and contrast checker. Convert between HEX, RGB, HSL, HSV and CMYK, and check text and background colors against the WCAG 2.2 contrast ratio thresholds for levels AA and AAA.",
+      "image": "https://us-color-converter.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://us-color-converter.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "How do I convert HEX to RGB?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Split the six digits into three pairs and read each pair as a base-16 number. For #1D4ED8, 1D is 29, 4E is 78 and D8 is 216, so the color is rgb(29, 78, 216). A three-digit code doubles each digit, so #F80 is #FF8800. An eight-digit code such as #1D4ED880 adds opacity as the last pair; this tool uses the CSS order #RRGGBBAA." } },
+        { "@type": "Question", "name": "What contrast ratio do I need?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WCAG 2.2 level AA asks for at least 4.5:1 for normal text and 3:1 for large text, which is at least 18 point, or 14 point bold. Level AAA asks for 7:1 and 4.5:1. Buttons, form borders, icons and other graphics need 3:1 against the colors next to them (Success Criterion 1.4.11, level AA)." } },
+        { "@type": "Question", "name": "How is the contrast ratio calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Each color's relative luminance is 0.2126 R + 0.7152 G + 0.0722 B, where each sRGB channel is first converted from its 0 to 255 value to linear light. The ratio is the lighter luminance plus 0.05 divided by the darker luminance plus 0.05, from 1:1 to 21:1. This tool shows the ratio cut to two decimals, never rounded up, so a pair shown as 4.49:1 does not pass a 4.5:1 test." } },
+        { "@type": "Question", "name": "Why do my CMYK numbers differ from my printer's?",
+          "acceptedAnswer": { "@type": "Answer", "text": "This converter uses the simple formula that treats cyan, magenta and yellow as the opposites of red, green and blue, with black taken out first. Real printing uses color profiles for specific inks and paper, such as US Web Coated (SWOP), so a print shop's values can be quite different. Ask your printer for values made with their profile before you print." } },
+        { "@type": "Question", "name": "How are transparent colors checked?",
+          "acceptedAnswer": { "@type": "Answer", "text": "When your color has less than 100% opacity and is used as text, it is first blended with the background, the same way a browser draws it, and the blended color is checked. When a semi-transparent color is used as the background, what shows through depends on the page behind it, so the tool checks the fully opaque color and says so." } }
+      ]
     }
-    </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Layout Shield: Anti 390px Horizontal Overflow -->
-    <style id="layout-shield">
-        html, body {
-            max-width: 100% !important;
-            width: 100% !important;
-            overflow-x: hidden !important;
-        }
-        main, article, .container {
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }
-        .manual-ad-box {
-            width: 100%;
-            max-width: 960px;
-            overflow: hidden;
-            margin: 12px auto;
-        }
-        .manual-ad-box ins {
-            max-width: 100% !important;
-            display: block;
-        }
-    </style>
-  <link rel="alternate" type="application/rss+xml" title="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check" href="https://us-color-converter.enjoy-onepage.com/rss.xml">
-  <link rel="sitemap" type="application/xml" href="https://us-color-converter.enjoy-onepage.com/sitemap.xml">
+  ]
+}
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
+<style>
+:root{--bg:#f4f7fd;--card:#fff;--ink:#0f1f3d;--muted:#56637d;--accent:#1d4ed8;--line:#dfe6f3;--g:#15803d;--r:#b91c1c}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.header{background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.7rem}
+.header-sub{opacity:.92;margin-top:6px;font-size:.95rem}
+.wrap{max-width:1080px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:1024px){.grid2{grid-template-columns:1fr 1fr;align-items:start}.result{position:sticky;top:12px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px}
+.card h3{font-size:1rem;margin:14px 0 6px}
+.lbl{display:block;font-weight:600;margin:10px 0 4px;font-size:.95rem}
+input[type=number],input[type=text]{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input[type=color]{width:64px;height:44px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;flex:none}
+.pickrow{display:flex;gap:12px;align-items:flex-end}
+.pickrow .grow{flex:1;min-width:0}
+fieldset{border:1px solid var(--line);border-radius:12px;margin:12px 0 0;padding:6px 12px 10px;min-width:0}
+legend{font-weight:700;padding:0 4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px}
+.cols label{display:block;font-size:.8rem;color:var(--muted);margin:4px 0 2px}
+.out{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.out code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.92rem;background:#f1f5fb;border-radius:8px;padding:4px 8px;overflow-wrap:anywhere;min-width:0}
+.hint{font-size:.86rem;color:var(--muted);margin:6px 0}
+.btn{font:inherit;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:9px 14px;cursor:pointer}
+.btn.sm{padding:4px 9px;font-size:.85rem;border-radius:8px;flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.err{color:var(--r);font-weight:600;margin:8px 0 0}
+.chk{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:.95rem}
+.roles{display:flex;flex-wrap:wrap;gap:0 18px}
+.preview{border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:4px 0 10px;overflow-wrap:anywhere}
+.preview p{margin:4px 0}
+.pv-n{font-size:16px}.pv-l{font-size:24px;line-height:1.3}.pv-b{font-size:18.7px;font-weight:700}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin:10px 0}
+.kpi .v{font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi .k{font-size:.85rem;color:var(--muted)}
+.kpi.big{background:#eff4ff;border-color:#c7d7fb}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:6px}
+th,td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pass{color:var(--g);font-weight:700}.fail{color:var(--r);font-weight:700}
+.note{font-size:.88rem;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:6px 10px;margin:8px 0}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#35425d}
+.src{font-size:.82rem;color:var(--muted)}
+.ad-box{max-width:1080px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f1f3d;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+<body>
+<header class="header">
+  <h1>Color Converter &amp; Contrast Checker</h1>
+  <div class="header-sub">HEX · RGB · HSL · HSV · CMYK · WCAG 2.2 contrast check</div>
+</header>
 
-    <!-- Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 font-black text-slate-900 text-lg sm:text-xl tracking-tight">
-                <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm font-black shadow-sm">1P</span>
-                <span>Color Space Converter</span>
-            </a>
-            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                2026 US Edition
-            </span>
-        </div>
-    </header>
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block;height:60px;max-height:90px" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
 
-    <!-- Main Workspace -->
-    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full">
-        <!-- Title Banner -->
-        <div class="mb-8 text-center max-w-2xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mb-2">Color Space Converter</h1>
-            <p class="text-sm sm:text-base text-slate-600">Convert colors instantly between HEX, RGB, HSL, and CMYK formats with real-time preview, copy codes, and contrast ratio check.</p>
+<main class="wrap">
+  <div class="grid2">
+    <section class="card" id="conv" aria-labelledby="in-h">
+      <h2 id="in-h">1. Your color</h2>
+      <div class="pickrow">
+        <input type="color" id="pick" value="#1d4ed8" aria-label="Pick a color">
+        <div class="grow">
+          <label class="lbl" for="any">Paste any color</label>
+          <input id="any" type="text" autocomplete="off" spellcheck="false" maxlength="60" placeholder="#1d4ed8, rgb(29 78 216) or hsl(224 76% 48%)">
         </div>
-
-        <!-- 2-Column Gold Standard Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <!-- Left: Input Form (6 cols) -->
-            <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200">
-                <h2 class="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                    <span>Input Parameters</span>
-                </h2>
-                
-        <div class="space-y-4">
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Primary Value / Amount ($)</label>
-                <div class="relative">
-                    <span class="absolute left-3 top-3 text-slate-400 font-bold">$</span>
-                    <input type="text" id="primaryVal" value="1,000" class="w-full pl-8 pr-4 py-3 bg-white border border-slate-300 rounded-xl font-semibold text-slate-800 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="1,000">
-                </div>
-            </div>
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Secondary Parameter / Multiplier</label>
-                <input type="number" id="secVal" value="12" min="1" class="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl font-semibold text-slate-800 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Calculation Category</label>
-                <select id="calcCat" class="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl font-semibold text-slate-800 text-base focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    <option value="standard">Standard US Model (Benchmark)</option>
-                    <option value="conservative">Conservative Estimate (-10%)</option>
-                    <option value="growth">Accelerated Target (+15%)</option>
-                </select>
-            </div>
-        </div>
-        
-                <button type="button" onclick="calculate()" class="mt-6 w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-black text-base rounded-xl shadow-md transition duration-150 cursor-pointer whitespace-nowrap">
-                    Calculate Now
-                </button>
-            </div>
-
-            <!-- Right: Results Card (6 cols sticky) -->
-            <div class="lg:col-span-6 lg:sticky lg:top-24">
-                <div id="resultCard" class="hidden">
-                    
-        <div class="bg-blue-600 text-white p-6 rounded-2xl shadow-md mb-6">
-            <p class="text-xs uppercase font-bold tracking-wider opacity-90 mb-1">Estimated Annual Result</p>
-            <h3 id="resPrimary" class="text-3xl sm:text-4xl font-black tracking-tight">$0</h3>
-            <p class="text-xs mt-2 opacity-80">Calculated under standard US benchmarking formulas</p>
-        </div>
-        <div class="space-y-3 text-sm text-slate-700 bg-white p-5 rounded-2xl border border-slate-200">
-            <div class="flex justify-between pb-2 border-b border-slate-100">
-                <span class="text-slate-500">Monthly Equivalent:</span>
-                <span id="resMonthly" class="font-bold text-slate-900">$0</span>
-            </div>
-            <div class="flex justify-between pt-1">
-                <span class="font-bold text-slate-900">Growth / Variance Index:</span>
-                <span id="resBenchmark" class="font-black text-blue-600">0%</span>
-            </div>
-        </div>
-        
-                    <div class="mt-4 flex gap-3">
-                        <button type="button" onclick="copyResults()" class="flex-1 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition shadow-sm cursor-pointer whitespace-nowrap">
-                            Copy Results
-                        </button>
-                        <button type="button" onclick="resetForm()" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm rounded-xl transition cursor-pointer whitespace-nowrap">
-                            Reset
-                        </button>
-                    </div>
-                </div>
-                <!-- Initial Placeholder -->
-                <div id="placeholderCard" class="p-8 text-center border-2 border-dashed border-slate-200 rounded-2xl text-slate-400">
-                    <p class="text-sm font-semibold">Enter your inputs on the left and click "Calculate Now" to view full projections.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- E-E-A-T Editorial FAQ Accordion -->
-        <section class="mt-14 max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-2xl border border-slate-200">
-            <h2 class="text-lg sm:text-xl font-black text-slate-900 mb-4">Frequently Asked Questions</h2>
-            <div class="space-y-3">
-                
-    <!-- In-Depth Guidebook CTA Banner (4-1-4 Compliance) -->
-    <div class="mt-8 mb-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <span class="inline-block px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full mb-2">COMPLETE 2026 HANDBOOK</span>
-        <h3 class="text-lg font-bold text-gray-900">Want to master the statutory details? Read our in-depth guide</h3>
-        <p class="text-xs text-gray-600 mt-1">Explore official calculation formulas, edge-case exemptions, and strategic checklists.</p>
       </div>
-      <a href="/guides/guide.html" class="whitespace-nowrap px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition flex items-center gap-2 text-xs shrink-0">
-        Read In-Depth Guide &rarr;
-      </a>
-    </div>
+      <p class="err" id="err" role="alert" hidden></p>
 
-    <details class="group border border-slate-200 rounded-xl p-4 transition">
-                    <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-center select-none">
-                        <span>How accurate are these calculations?</span>
-                        <span class="text-blue-600 font-bold group-open:rotate-180 transition-transform">▼</span>
-                    </summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        Calculations use 2026 statutory formulas and verified standard economic models. While highly accurate for benchmarking, always consult a certified professional for individual legal or financial filings.
-                    </p>
-                </details>
-                <details class="group border border-slate-200 rounded-xl p-4 transition">
-                    <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-center select-none">
-                        <span>Is my personal or financial data stored?</span>
-                        <span class="text-blue-600 font-bold group-open:rotate-180 transition-transform">▼</span>
-                    </summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        No. 100% of the computations occur locally in your browser's JavaScript engine. Zero personal or financial data is transmitted to or saved on external servers.
-                    </p>
-                </details>
-                <details class="group border border-slate-200 rounded-xl p-4 transition">
-                    <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-center select-none">
-                        <span>Can I export or share my calculation results?</span>
-                        <span class="text-blue-600 font-bold group-open:rotate-180 transition-transform">▼</span>
-                    </summary>
-                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        Yes! Click the "Copy Results" button to copy a formatted summary with a link directly to your clipboard for sharing via Slack, email, or messaging apps.
-                    </p>
-                </details>
-            </div>
-        </section>
-    </main>
-
-    <!-- Floating Toast Notification -->
-    <div id="toastNotification" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-2xl opacity-0 pointer-events-none transition-opacity duration-200 z-50">
-        Copied to clipboard!
-    </div>
-
-    <!-- Modern Trust Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-12">
-        <div class="max-w-6xl mx-auto px-4 space-y-3">
-            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-semibold text-slate-600">
-                <a href="/terms.html" class="hover:text-blue-600 transition">Terms of Service</a>
-                <span class="text-slate-300">|</span>
-                <a href="/privacy.html" class="hover:text-blue-600 transition">Privacy Policy</a>
-                <span class="text-slate-300">|</span>
-                <a href="/disclaimer.html" class="hover:text-blue-600 transition">Disclaimer</a>
-            </div>
-            <p class="max-w-xl mx-auto text-slate-400">
-                This tool is provided for educational and estimation purposes only. All calculations run client-side.
-            </p>
-            <p>&copy; 2026 Color Space Converter. All rights reserved.</p>
+      <fieldset>
+        <legend>HEX</legend>
+        <div class="cols">
+          <div><label for="hex">HEX code</label><input id="hex" type="text" autocomplete="off" spellcheck="false" maxlength="9"></div>
+          <div><label for="alpha">Opacity %</label><input id="alpha" type="number" min="0" max="100" step="1" inputmode="numeric"></div>
         </div>
-    </footer>
+        <div class="out"><code id="o-hex"></code><button type="button" class="btn sm" data-copy="hex">Copy</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>RGB</legend>
+        <div class="cols">
+          <div><label for="r">Red</label><input id="r" type="number" min="0" max="255" step="1" inputmode="numeric"></div>
+          <div><label for="g">Green</label><input id="g" type="number" min="0" max="255" step="1" inputmode="numeric"></div>
+          <div><label for="b">Blue</label><input id="b" type="number" min="0" max="255" step="1" inputmode="numeric"></div>
+        </div>
+        <div class="out"><code id="o-rgb"></code><button type="button" class="btn sm" data-copy="rgb">Copy</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>HSL</legend>
+        <div class="cols">
+          <div><label for="hh">Hue °</label><input id="hh" type="number" min="0" max="360" step="1" inputmode="decimal"></div>
+          <div><label for="hs">Saturation %</label><input id="hs" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+          <div><label for="hl">Lightness %</label><input id="hl" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+        </div>
+        <div class="out"><code id="o-hsl"></code><button type="button" class="btn sm" data-copy="hsl">Copy</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>HSV / HSB</legend>
+        <div class="cols">
+          <div><label for="vh">Hue °</label><input id="vh" type="number" min="0" max="360" step="1" inputmode="decimal"></div>
+          <div><label for="vs">Saturation %</label><input id="vs" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+          <div><label for="vv">Value %</label><input id="vv" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+        </div>
+        <div class="out"><code id="o-hsv"></code><button type="button" class="btn sm" data-copy="hsv">Copy</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>CMYK</legend>
+        <div class="cols">
+          <div><label for="cc">Cyan %</label><input id="cc" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+          <div><label for="cm">Magenta %</label><input id="cm" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+          <div><label for="cy">Yellow %</label><input id="cy" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+          <div><label for="ck">Black %</label><input id="ck" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+        </div>
+        <div class="out"><code id="o-cmyk"></code><button type="button" class="btn sm" data-copy="cmyk">Copy</button></div>
+      </fieldset>
+      <p class="hint">Edit any field and the others follow. Values are rounded to whole numbers. CMYK is a simple screen estimate, not a print proof.</p>
+    </section>
 
-    <!-- Logic Script -->
-    <script>
-        
-        function calculate() {
-            const prim = parseFloat(document.getElementById('primaryVal').value.replace(/,/g, '')) || 0;
-            const sec = parseFloat(document.getElementById('secVal').value) || 1;
-            const cat = document.getElementById('calcCat').value;
-            
-            let mult = 1.0;
-            if (cat === 'conservative') mult = 0.90;
-            if (cat === 'growth') mult = 1.15;
-            
-            const total = prim * sec * mult;
-            const monthly = total / 12;
-            const rate = ((total / (prim || 1)) * 10).toFixed(1);
-            
-            document.getElementById('resPrimary').textContent = '$' + Math.round(total).toLocaleString('en-US');
-            document.getElementById('resMonthly').textContent = '$' + Math.round(monthly).toLocaleString('en-US');
-            document.getElementById('resBenchmark').textContent = rate + '%';
-            
-            document.getElementById('resultCard').classList.remove('hidden');
-        }
-        
+    <section class="card result" id="res" aria-labelledby="out-h">
+      <h2 id="out-h">2. Contrast check</h2>
+      <div class="preview" id="pv">
+        <p class="pv-n">Normal text sample (16px)</p>
+        <p class="pv-l">Large text sample (24px)</p>
+        <p class="pv-b">Large bold sample (18.7px bold)</p>
+      </div>
+      <fieldset class="roles">
+        <legend>Your color is the</legend>
+        <label class="chk"><input type="radio" name="role" value="text" checked> Text</label>
+        <label class="chk"><input type="radio" name="role" value="bg"> Background</label>
+      </fieldset>
+      <div class="pickrow">
+        <input type="color" id="pick2" value="#ffffff" aria-label="Pick the other color">
+        <div class="grow">
+          <label class="lbl" for="other" id="other-l">Background color (HEX)</label>
+          <input id="other" type="text" autocomplete="off" spellcheck="false" maxlength="7">
+        </div>
+      </div>
+      <div class="actions" style="margin-top:8px">
+        <button type="button" class="btn sm" id="btn-white">White</button>
+        <button type="button" class="btn sm" id="btn-black">Black</button>
+        <button type="button" class="btn sm" id="btn-swap">Swap text and background</button>
+      </div>
+      <p class="err" id="err2" role="alert" hidden></p>
+      <div class="kpi big" aria-live="polite"><div class="v" id="ratio">1:1</div><div class="k" id="ratio-k">contrast ratio</div></div>
+      <table aria-describedby="out-h">
+        <thead><tr><th scope="col">WCAG 2.2 test</th><th scope="col" class="n">Needs</th><th scope="col" class="n">Result</th></tr></thead>
+        <tbody id="checks"></tbody>
+      </table>
+      <p class="hint" id="best"></p>
+      <div id="notes"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="btn-copy">📋 Copy</button>
+        <button type="button" class="btn" id="btn-share">📤 Share</button>
+      </div>
+    </section>
+  </div>
 
-        function copyResults() {
-            const resCard = document.getElementById('resultCard');
-            const lines = [];
-            lines.push("Color Space Converter - Calculation Summary");
-            lines.push("=============================");
-            resCard.querySelectorAll('.flex.justify-between').forEach(el => {
-                const k = el.querySelector('span:first-child')?.innerText || '';
-                const v = el.querySelector('span:last-child')?.innerText || '';
-                if (k && v) lines.push(k + ' ' + v);
-            });
-            lines.push("-----------------------------");
-            lines.push("👉 Try it here: https://us-color-converter.enjoy-onepage.com/");
-            
-            const textToCopy = lines.join('\n');
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(textToCopy).then(() => showToast());
-            } else {
-                const ta = document.createElement('textarea');
-                ta.value = textToCopy;
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-                showToast();
-            }
-        }
+<!-- ADSENSE START: mid (right after the result card) -->
+<div class="ad-box ad-mid">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
 
-        function showToast() {
-            const t = document.getElementById('toastNotification');
-            t.classList.remove('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
-                t.classList.add('opacity-0', 'pointer-events-none');
-            }, 2200);
-        }
+  <section class="card" aria-labelledby="how-h">
+    <h2 id="how-h">🧮 How the conversions work</h2>
+    <ul>
+      <li><strong>HEX and RGB:</strong> a HEX code is three pairs of base-16 digits for red, green and blue (00 to FF, which is 0 to 255). Example: #1D4ED8 is rgb(29, 78, 216). Three-digit codes double each digit, and a fourth or eighth digit pair is opacity (CSS order #RRGGBBAA; Android writes #AARRGGBB instead).</li>
+      <li><strong>HSL:</strong> hue in degrees around the color wheel, then saturation and lightness in percent, as defined for CSS in the W3C CSS Color Module Level 4.</li>
+      <li><strong>HSV / HSB:</strong> the same hue, with saturation and value (brightness) instead of lightness. It is the model many design apps use in their color pickers.</li>
+      <li><strong>CMYK:</strong> K = 1 − max(R′, G′, B′), then C = (1 − R′ − K) ÷ (1 − K), and the same for M with G′ and Y with B′, where R′, G′ and B′ are 0 to 1. This ignores inks and paper, so it is only an estimate.</li>
+      <li><strong>Contrast ratio:</strong> each channel is divided by 255 and converted to linear light (divide by 12.92 at 0.04045 or below, otherwise ((c + 0.055) ÷ 1.055)^2.4). Relative luminance is 0.2126 R + 0.7152 G + 0.0722 B, and the ratio is (lighter + 0.05) ÷ (darker + 0.05).</li>
+      <li><strong>Pass or fail:</strong> the unrounded ratio is compared with each threshold. The ratio on screen is cut to two decimals, never rounded up.</li>
+    </ul>
+    <h3>WCAG 2.2 contrast thresholds</h3>
+    <div style="overflow-x:auto"><table><thead><tr><th scope="col">Success criterion</th><th scope="col">Applies to</th><th scope="col" class="n">Minimum</th></tr></thead><tbody>
+      <tr><td>1.4.3 Contrast (Minimum), AA</td><td>Normal text</td><td class="n">4.5:1</td></tr>
+      <tr><td>1.4.3 Contrast (Minimum), AA</td><td>Large text: 18 pt (about 24px), or 14 pt (about 18.7px) bold</td><td class="n">3:1</td></tr>
+      <tr><td>1.4.6 Contrast (Enhanced), AAA</td><td>Normal text</td><td class="n">7:1</td></tr>
+      <tr><td>1.4.6 Contrast (Enhanced), AAA</td><td>Large text</td><td class="n">4.5:1</td></tr>
+      <tr><td>1.4.11 Non-text Contrast, AA</td><td>User interface components and graphics</td><td class="n">3:1</td></tr>
+    </tbody></table></div>
+    <p class="src">Sources: W3C Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, republished December 12, 2024: Success Criteria 1.4.3, 1.4.6 and 1.4.11 and the definitions of contrast ratio, relative luminance and large scale text. Before May 2021 the luminance cut-off was written as 0.03928; W3C notes this has no practical effect. HSL: W3C CSS Color Module Level 4. Point to pixel sizes use the CSS rule of 72 pt = 96px.</p>
+  </section>
 
-        function resetForm() {
-            document.getElementById('resultCard').classList.add('hidden');
-            document.getElementById('placeholderCard').classList.remove('hidden');
-        }
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ Frequently asked questions</h2>
+    <div class="faq-item"><h3>How do I convert HEX to RGB?</h3><p>Split the six digits into three pairs and read each pair as a base-16 number. For #1D4ED8, 1D is 29, 4E is 78 and D8 is 216, so the color is rgb(29, 78, 216). A three-digit code doubles each digit, so #F80 is #FF8800. An eight-digit code such as #1D4ED880 adds opacity as the last pair; this tool uses the CSS order #RRGGBBAA.</p></div>
+    <div class="faq-item"><h3>What contrast ratio do I need?</h3><p>WCAG 2.2 level AA asks for at least 4.5:1 for normal text and 3:1 for large text, which is at least 18 point, or 14 point bold. Level AAA asks for 7:1 and 4.5:1. Buttons, form borders, icons and other graphics need 3:1 against the colors next to them (Success Criterion 1.4.11, level AA).</p></div>
+    <div class="faq-item"><h3>How is the contrast ratio calculated?</h3><p>Each color's relative luminance is 0.2126 R + 0.7152 G + 0.0722 B, where each sRGB channel is first converted from its 0 to 255 value to linear light. The ratio is the lighter luminance plus 0.05 divided by the darker luminance plus 0.05, from 1:1 to 21:1. This tool shows the ratio cut to two decimals, never rounded up, so a pair shown as 4.49:1 does not pass a 4.5:1 test.</p></div>
+    <div class="faq-item"><h3>Why do my CMYK numbers differ from my printer's?</h3><p>This converter uses the simple formula that treats cyan, magenta and yellow as the opposites of red, green and blue, with black taken out first. Real printing uses color profiles for specific inks and paper, such as US Web Coated (SWOP), so a print shop's values can be quite different. Ask your printer for values made with their profile before you print.</p></div>
+    <div class="faq-item"><h3>How are transparent colors checked?</h3><p>When your color has less than 100% opacity and is used as text, it is first blended with the background, the same way a browser draws it, and the blended color is checked. When a semi-transparent color is used as the background, what shows through depends on the page behind it, so the tool checks the fully opaque color and says so.</p></div>
+  </section>
 
-        // Auto calculate on load
-        window.addEventListener('DOMContentLoaded', () => {
-            calculate();
-            document.getElementById('placeholderCard').classList.add('hidden');
-        });
-    </script>
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ Please note</h2>
+    <p>Results are for screen colors in the standard sRGB color space. The contrast check follows the WCAG 2.2 formula and thresholds, but it is not a full accessibility review or legal advice, and it cannot judge font weight, size or how text is really rendered. CMYK values are estimates, not print proofs.</p>
+  </section>
+</main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>A free color converter and contrast checker. The colors you enter are not saved or sent to us.</p>
+  <p><a href="/disclaimer.html">Disclaimer</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://us-color-converter.enjoy-onepage.com';
+  var TOOL_NAME = 'Color Converter & Contrast Checker';
+  var S = { r: 29, g: 78, b: 216, a: 1 };      /* your color: 0-255 channels, opacity 0-1 */
+  var O = { r: 255, g: 255, b: 255 };          /* the other color, always opaque */
+  var ROLE = 'text';                            /* your color is the text on O, or the background under O */
+  var LAST = null, toastTimer = null;
+  /* WCAG 2.2: SC 1.4.3 (AA), 1.4.6 (AAA), 1.4.11 (AA non-text) */
+  var CHECKS = [
+    { id: 'aa', name: 'AA · normal text', short: 'AA', need: 4.5 },
+    { id: 'aal', name: 'AA · large text', short: 'AA large', need: 3 },
+    { id: 'aaa', name: 'AAA · normal text', short: 'AAA', need: 7 },
+    { id: 'aaal', name: 'AAA · large text', short: 'AAA large', need: 4.5 },
+    { id: 'ui', name: 'AA · UI parts and graphics', short: 'UI', need: 3 }
+  ];
+  function $(id) { return document.getElementById(id); }
+  function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
+
+  /* ---------- color math ---------- */
+  function hueOf(r, g, b, mx, d) {
+    if (!d) return 0;
+    var h = mx === r ? (g - b) / d : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h *= 60;
+    return h < 0 ? h + 360 : h;
+  }
+  function rgbToHsl(R, G, B) {
+    var r = R / 255, g = G / 255, b = B / 255, mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn, l = (mx + mn) / 2;
+    var s = d === 0 ? 0 : (l <= 0.5 ? d / (mx + mn) : d / (2 - mx - mn));
+    return { h: hueOf(r, g, b, mx, d), s: s * 100, l: l * 100 };
+  }
+  function rgbToHsv(R, G, B) {
+    var r = R / 255, g = G / 255, b = B / 255, mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+    return { h: hueOf(r, g, b, mx, d), s: mx === 0 ? 0 : d / mx * 100, v: mx * 100 };
+  }
+  function fromChroma(h, c, m) {
+    var hp = (h % 360) / 60, x = c * (1 - Math.abs(hp % 2 - 1));
+    var p = hp < 1 ? [c, x, 0] : hp < 2 ? [x, c, 0] : hp < 3 ? [0, c, x] : hp < 4 ? [0, x, c] : hp < 5 ? [x, 0, c] : [c, 0, x];
+    return { r: Math.round((p[0] + m) * 255), g: Math.round((p[1] + m) * 255), b: Math.round((p[2] + m) * 255) };
+  }
+  function hslToRgb(h, s, l) { s /= 100; l /= 100; var c = (1 - Math.abs(2 * l - 1)) * s; return fromChroma(h, c, l - c / 2); }
+  function hsvToRgb(h, s, v) { s /= 100; v /= 100; var c = v * s; return fromChroma(h, c, v - c); }
+  function rgbToCmyk(R, G, B) {
+    var r = R / 255, g = G / 255, b = B / 255, k = 1 - Math.max(r, g, b);
+    if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+    return { c: (1 - r - k) / (1 - k) * 100, m: (1 - g - k) / (1 - k) * 100, y: (1 - b - k) / (1 - k) * 100, k: k * 100 };
+  }
+  function cmykToRgb(c, m, y, k) {
+    var kk = 1 - k / 100;
+    return { r: Math.round(255 * (1 - c / 100) * kk), g: Math.round(255 * (1 - m / 100) * kk), b: Math.round(255 * (1 - y / 100) * kk) };
+  }
+  function lin(c8) { var c = c8 / 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+  function lum(c) { return 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b); }
+  function ratio(c1, c2) { var a = lum(c1), b = lum(c2); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); }
+  function blend(f, b, a) {
+    return { r: Math.round(a * f.r + (1 - a) * b.r), g: Math.round(a * f.g + (1 - a) * b.g), b: Math.round(a * f.b + (1 - a) * b.b) };
+  }
+
+  /* ---------- parsing and formatting ---------- */
+  var NUM = /^[+]?(\d+\.?\d*|\.\d+)$/;
+  function hex2(n) { return (n < 16 ? '0' : '') + n.toString(16); }
+  function toHex(c, withAlpha) {
+    return '#' + hex2(c.r) + hex2(c.g) + hex2(c.b) + (withAlpha && c.a < 1 ? hex2(Math.round(c.a * 255)) : '');
+  }
+  function parseHex(s) {
+    var m = /^#?([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.exec(String(s).trim());
+    if (!m) return null;
+    var h = m[1];
+    if (h.length < 5) h = h.replace(/./g, function (x) { return x + x; });
+    return { r: parseInt(h.slice(0, 2), 16), g: parseInt(h.slice(2, 4), 16), b: parseInt(h.slice(4, 6), 16),
+      a: h.length === 8 ? parseInt(h.slice(6, 8), 16) / 255 : 1 };
+  }
+  function chanVal(t) {
+    if (/%$/.test(t)) { var p = t.slice(0, -1); if (!NUM.test(p) || Number(p) > 100) return null; return Math.round(Number(p) * 255 / 100); }
+    if (!NUM.test(t) || Number(t) > 255) return null;
+    return Math.round(Number(t));
+  }
+  function pctVal(t) { var p = t.replace(/%$/, ''); if (!NUM.test(p) || Number(p) > 100) return null; return Number(p); }
+  function hueVal(t) { var p = t.replace(/deg$/, ''); if (!NUM.test(p)) return null; return Number(p) % 360; }
+  function alphaVal(t) {
+    if (/%$/.test(t)) { var p = t.slice(0, -1); if (!NUM.test(p) || Number(p) > 100) return null; return Number(p) / 100; }
+    if (!NUM.test(t) || Number(t) > 1) return null;
+    return Number(t);
+  }
+  function parseColor(s) {
+    s = String(s).trim().toLowerCase();
+    if (!s) return null;
+    var hx = parseHex(s);
+    if (hx) return hx;
+    var m = /^(rgba?|hsla?)\(\s*([^()]*)\)$/.exec(s);
+    if (!m) return null;
+    var parts = m[2].split(/\s*[,\/]\s*|\s+/).filter(function (x) { return x !== ''; });
+    if (parts.length !== 3 && parts.length !== 4) return null;
+    var a = parts.length === 4 ? alphaVal(parts[3]) : 1;
+    if (a === null) return null;
+    if (m[1].charAt(0) === 'r') {
+      var r = chanVal(parts[0]), g = chanVal(parts[1]), b = chanVal(parts[2]);
+      if (r === null || g === null || b === null) return null;
+      return { r: r, g: g, b: b, a: a };
+    }
+    var h = hueVal(parts[0]), sat = pctVal(parts[1]), lig = pctVal(parts[2]);
+    if (h === null || sat === null || lig === null) return null;
+    var c = hslToRgb(h, sat, lig);
+    c.a = a;
+    return c;
+  }
+  function aStr(a) { return String(Number(a.toFixed(2))); }
+  function hslOut(c) { var x = rgbToHsl(c.r, c.g, c.b); return [Math.round(x.h) % 360, Math.round(x.s), Math.round(x.l)]; }
+  function hsvOut(c) { var x = rgbToHsv(c.r, c.g, c.b); return [Math.round(x.h) % 360, Math.round(x.s), Math.round(x.v)]; }
+  function cmykOut(c) { var x = rgbToCmyk(c.r, c.g, c.b); return [Math.round(x.c), Math.round(x.m), Math.round(x.y), Math.round(x.k)]; }
+  function css(c) {
+    var hl = hslOut(c), hv = hsvOut(c), k = cmykOut(c), op = c.a < 1;
+    return {
+      hex: toHex(c, true),
+      rgb: op ? 'rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', ' + aStr(c.a) + ')' : 'rgb(' + c.r + ', ' + c.g + ', ' + c.b + ')',
+      hsl: op ? 'hsla(' + hl[0] + ', ' + hl[1] + '%, ' + hl[2] + '%, ' + aStr(c.a) + ')' : 'hsl(' + hl[0] + ', ' + hl[1] + '%, ' + hl[2] + '%)',
+      hsv: 'hsv(' + hv[0] + ', ' + hv[1] + '%, ' + hv[2] + '%)',
+      cmyk: 'cmyk(' + k[0] + '%, ' + k[1] + '%, ' + k[2] + '%, ' + k[3] + '%)'
+    };
+  }
+  function fmtRatio(x) { return (Math.floor(x * 100) / 100).toFixed(2).replace(/\.?0+$/, ''); }
+
+  /* ---------- field groups ---------- */
+  var GROUPS = {
+    rgb: { ids: ['r', 'g', 'b'], lim: [[0, 255, true], [0, 255, true], [0, 255, true]],
+      to: function (v) { return { r: v[0], g: v[1], b: v[2] }; }, from: function (c) { return [c.r, c.g, c.b]; },
+      msg: 'Red, green and blue must be whole numbers from 0 to 255.' },
+    hsl: { ids: ['hh', 'hs', 'hl'], lim: [[0, 360], [0, 100], [0, 100]],
+      to: function (v) { return hslToRgb(v[0], v[1], v[2]); }, from: hslOut,
+      msg: 'HSL: hue goes from 0 to 360, saturation and lightness from 0 to 100.' },
+    hsv: { ids: ['vh', 'vs', 'vv'], lim: [[0, 360], [0, 100], [0, 100]],
+      to: function (v) { return hsvToRgb(v[0], v[1], v[2]); }, from: hsvOut,
+      msg: 'HSV: hue goes from 0 to 360, saturation and value from 0 to 100.' },
+    cmyk: { ids: ['cc', 'cm', 'cy', 'ck'], lim: [[0, 100], [0, 100], [0, 100], [0, 100]],
+      to: function (v) { return cmykToRgb(v[0], v[1], v[2], v[3]); }, from: cmykOut,
+      msg: 'CMYK: cyan, magenta, yellow and black go from 0 to 100.' }
+  };
+  var GROUP_OF = {};
+  Object.keys(GROUPS).forEach(function (k) { GROUPS[k].ids.forEach(function (id) { GROUP_OF[id] = k; }); });
+  function readGroup(g) {
+    var out = [];
+    for (var i = 0; i < g.ids.length; i++) {
+      var el = $(g.ids[i]), t = el ? String(el.value).trim() : '', lim = g.lim[i];
+      if (!NUM.test(t)) return null;
+      var n = Number(t);
+      if (!isFinite(n) || n < lim[0] || n > lim[1] || (lim[2] && !Number.isInteger(n))) return null;
+      out.push(n);
+    }
+    return out;
+  }
+  function showErr(id, msg) { var e = $(id); if (!e) return; e.textContent = msg; e.hidden = !msg; }
+
+  /* ---------- rendering ---------- */
+  function render(skip) {
+    var o = css(S);
+    if (skip !== 'hex') $('hex').value = o.hex;
+    if (skip !== 'alpha') $('alpha').value = String(Math.round(S.a * 100));
+    if (skip !== 'pick') $('pick').value = toHex(S, false);
+    if (skip !== 'any') $('any').value = '';
+    Object.keys(GROUPS).forEach(function (k) {
+      if (k === skip) return;
+      var vals = GROUPS[k].from(S);
+      GROUPS[k].ids.forEach(function (id, i) { $(id).value = String(vals[i]); });
+    });
+    ['hex', 'rgb', 'hsl', 'hsv', 'cmyk'].forEach(function (k) { $('o-' + k).textContent = o[k]; });
+    renderContrast();
+  }
+  function renderOther(skip) {
+    if (skip !== 'other') $('other').value = toHex(O, false);
+    if (skip !== 'pick2') $('pick2').value = toHex(O, false);
+    renderContrast();
+  }
+  function renderContrast() {
+    var mine = { r: S.r, g: S.g, b: S.b }, text, bg, notes = [];
+    if (ROLE === 'text') {
+      bg = O;
+      text = S.a < 1 ? blend(mine, O, S.a) : mine;
+      if (S.a < 1) notes.push('Your color is ' + Math.round(S.a * 100) + '% opaque, so it was blended with the background first. Rendered text color: ' + toHex(text, false) + '.');
+    } else {
+      bg = mine;
+      text = O;
+      if (S.a < 1) notes.push('Opacity is ignored when your color is the background, because what shows through depends on what is behind it. The result uses the fully opaque color ' + toHex(mine, false) + '.');
+    }
+    var R = ratio(text, bg);
+    $('ratio').textContent = fmtRatio(R) + ':1';
+    $('ratio-k').textContent = 'contrast ratio · text ' + toHex(text, false) + ' on ' + toHex(bg, false);
+    var rows = '';
+    CHECKS.forEach(function (c) {
+      var ok = R >= c.need;
+      rows += '<tr id="ck-' + c.id + '"><td>' + c.name + '</td><td class="n">' + fmtRatio(c.need) + ':1</td><td class="n ' + (ok ? 'pass' : 'fail') + '">' + (ok ? '✓ Pass' : '✗ Fail') + '</td></tr>';
+    });
+    $('checks').innerHTML = rows;
+    var onBlack = ratio({ r: 0, g: 0, b: 0 }, bg), onWhite = ratio({ r: 255, g: 255, b: 255 }, bg);
+    $('best').textContent = 'On this background, black text scores ' + fmtRatio(onBlack) + ':1 and white text ' + fmtRatio(onWhite) + ':1.';
+    $('notes').innerHTML = '';
+    notes.forEach(function (t) { var p = document.createElement('p'); p.className = 'note'; p.textContent = t; $('notes').appendChild(p); });
+    var pv = $('pv');
+    pv.style.backgroundColor = toHex(bg, false);
+    pv.style.color = ROLE === 'text' ? (S.a < 1 ? 'rgba(' + S.r + ',' + S.g + ',' + S.b + ',' + S.a + ')' : toHex(S, false)) : toHex(O, false);
+    $('other-l').textContent = ROLE === 'text' ? 'Background color (HEX)' : 'Text color (HEX)';
+    LAST = { R: R, text: text, bg: bg };
+  }
+  function set(c, skip) {
+    S = { r: c.r, g: c.g, b: c.b, a: c.a };
+    showErr('err', '');
+    render(skip);
+    updateUrl();
+  }
+
+  /* ---------- sharing ---------- */
+  function query() {
+    var q = '?c=' + toHex(S, true).slice(1) + '&bg=' + toHex(O, false).slice(1);
+    return ROLE === 'bg' ? q + '&role=bg' : q;
+  }
+  function link() { return SITE + '/' + query(); }
+  function updateUrl() { try { history.replaceState(null, '', location.pathname + query()); } catch (e) { /* file:// or sandboxed */ } }
+  function summary() {
+    if (!LAST) return '';
+    var o = css(S), R = LAST.R;
+    var marks = CHECKS.map(function (c) { return c.short + (R >= c.need ? ' ✓' : ' ✗'); }).join(' · ');
+    return '🎨 ' + o.hex + ' = ' + o.rgb + ' = ' + o.hsl + ' = ' + o.cmyk + '\n' +
+      (ROLE === 'text' ? 'Contrast as text on ' + toHex(O, false) : 'Contrast as background under ' + toHex(O, false) + ' text') +
+      ': ' + fmtRatio(R) + ':1 (' + marks + ')\n👉 ' + TOOL_NAME + ': ' + link();
+  }
+  function showToastNotification(msg) {
+    var t = $('global-ux-toast'); if (!t) return;
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2200);
+  }
+  function fallbackCopy(text, okMsg) {
+    var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    showToastNotification(ok ? okMsg : 'Could not copy. Please select the text and copy it yourself.');
+  }
+  function copyText(text, okMsg) {
+    okMsg = okMsg || 'Copied! Paste it anywhere to share.';
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { showToastNotification(okMsg); }, function () { fallbackCopy(text, okMsg); });
+    } else { fallbackCopy(text, okMsg); }
+  }
+
+  /* ---------- events ---------- */
+  on('conv', 'input', function (e) {
+    var t = e.target, id = t && t.id;
+    if (!id) return;
+    if (id === 'any') {
+      var v = String(t.value).trim();
+      if (!v) { showErr('err', ''); return; }
+      var pc = parseColor(v);
+      if (!pc) { showErr('err', 'Try a HEX code like #1d4ed8, rgb(29, 78, 216) or hsl(224, 76%, 48%).'); return; }
+      set(pc, 'any');
+    } else if (id === 'hex') {
+      var ph = parseHex(t.value);
+      if (!ph) { showErr('err', 'A HEX code has 3, 4, 6 or 8 digits from 0-9 and a-f, like #1d4ed8.'); return; }
+      set(ph, 'hex');
+    } else if (id === 'alpha') {
+      var s = String(t.value).trim();
+      if (!NUM.test(s) || Number(s) > 100) { showErr('err', 'Opacity goes from 0 to 100.'); return; }
+      set({ r: S.r, g: S.g, b: S.b, a: Number(s) / 100 }, 'alpha');
+    } else if (id === 'pick') {
+      var pp = parseHex(t.value);
+      if (pp) set({ r: pp.r, g: pp.g, b: pp.b, a: S.a }, 'pick');
+    } else if (GROUP_OF[id]) {
+      var gname = GROUP_OF[id], vals = readGroup(GROUPS[gname]);
+      if (!vals) { showErr('err', GROUPS[gname].msg); return; }
+      var c = GROUPS[gname].to(vals);
+      set({ r: c.r, g: c.g, b: c.b, a: S.a }, gname);
+    }
+  });
+  on('conv', 'change', function (e) {
+    var t = e.target, id = t && t.id;
+    if (!id || id === 'any' || id === 'pick') return;
+    /* Leaving a field only repairs it: an invalid entry goes back to the current color, and a valid HEX code is tidied.
+       Valid numbers stay exactly as typed, so moving from Hue to Saturation never rewrites the hue. */
+    var s = String(t.value).trim();
+    var valid = GROUP_OF[id] ? !!readGroup(GROUPS[GROUP_OF[id]]) : id === 'hex' ? !!parseHex(s) :
+      id === 'alpha' ? (NUM.test(s) && Number(s) <= 100) : true;
+    if (valid && id !== 'hex') return;
+    showErr('err', '');
+    render('any');
+  });
+  on('conv', 'click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('[data-copy]') : null;
+    if (!b) return;
+    var v = css(S)[b.getAttribute('data-copy')];
+    if (v) copyText(v, 'Copied ' + v);
+  });
+  function setOther(c, skip) { O = { r: c.r, g: c.g, b: c.b }; showErr('err2', ''); renderOther(skip); updateUrl(); }
+  on('other', 'input', function () {
+    var v = String($('other').value).trim(), m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v) ? parseHex(v) : null;
+    if (!m) { showErr('err2', 'Enter the other color as a 3 or 6 digit HEX code, like #ffffff.'); return; }
+    setOther(m, 'other');
+  });
+  on('other', 'change', function () { showErr('err2', ''); renderOther(); });
+  on('pick2', 'input', function () { var m = parseHex($('pick2').value); if (m) setOther(m, 'pick2'); });
+  on('btn-white', 'click', function () { setOther({ r: 255, g: 255, b: 255 }); });
+  on('btn-black', 'click', function () { setOther({ r: 0, g: 0, b: 0 }); });
+  function setRole(r) {
+    ROLE = r === 'bg' ? 'bg' : 'text';
+    var radios = document.querySelectorAll('input[name="role"]');
+    for (var i = 0; i < radios.length; i++) radios[i].checked = radios[i].value === ROLE;
+    renderContrast();
+    updateUrl();
+  }
+  on('res', 'change', function (e) { if (e.target && e.target.name === 'role') setRole(e.target.value); });
+  on('btn-swap', 'click', function () { setRole(ROLE === 'text' ? 'bg' : 'text'); });
+  on('btn-copy', 'click', function () { var t = summary(); if (t) copyText(t); });
+  on('btn-share', 'click', function () {
+    var text = summary(); if (!text) return;
+    if (navigator.share) { navigator.share({ title: TOOL_NAME, text: text, url: link() }).catch(function (e) { if (!e || e.name !== 'AbortError') copyText(text); }); }
+    else { copyText(text); }
+  });
+
+  /* ---------- start: link values (?c=RRGGBB[AA]&bg=RRGGBB&role=bg) ---------- */
+  (function init() {
+    var q; try { q = new URLSearchParams(location.search); } catch (e) { q = null; }
+    if (q) {
+      var c = q.get('c'), pc = c && /^([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(c) ? parseHex(c) : null;
+      if (pc) S = pc;
+      var b = q.get('bg'), pb = b && /^([0-9a-f]{3}|[0-9a-f]{6})$/i.test(b) ? parseHex(b) : null;
+      if (pb) O = { r: pb.r, g: pb.g, b: pb.b };
+      if (q.get('role') === 'bg') ROLE = 'bg';
+    }
+    var radios = document.querySelectorAll('input[name="role"]');
+    for (var i = 0; i < radios.length; i++) radios[i].checked = radios[i].value === ROLE;
+    render();
+    renderOther();
+  })();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>
