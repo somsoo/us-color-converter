@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check</title>
-<meta name="description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<title>HEX to RGB, HSL &amp; CMYK Color</title>
+<meta name="description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK,">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://us-color-converter.enjoy-onepage.com/">
 <meta name="theme-color" content="#1d4ed8">
@@ -12,13 +12,13 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Color Converter &amp; Contrast Checker">
-<meta property="og:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
-<meta property="og:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<meta property="og:title" content="HEX to RGB, HSL &amp; CMYK Color">
+<meta property="og:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK,">
 <meta property="og:url" content="https://us-color-converter.enjoy-onepage.com/">
 <meta property="og:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HEX to RGB, HSL &amp; CMYK Color Converter | Contrast Check">
-<meta name="twitter:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK, then check text contrast against WCAG 2.2 AA and AAA. Free and private, all in your browser.">
+<meta name="twitter:title" content="HEX to RGB, HSL &amp; CMYK Color">
+<meta name="twitter:description" content="Convert colors between HEX, RGB, HSL, HSV and CMYK,">
 <meta name="twitter:image" content="https://us-color-converter.enjoy-onepage.com/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="Color Converter RSS" href="https://us-color-converter.enjoy-onepage.com/rss.xml">
 <link rel="sitemap" type="application/xml" href="https://us-color-converter.enjoy-onepage.com/sitemap.xml">
@@ -116,6 +116,25 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f1f3d;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion: reduce){.toast{transition:none}}
+</style>
+<script id="math-guard">
+// Global Math & DOM Output Guard: prevents NaN / Infinity leaks to UI
+(function() {
+  const origToLocaleString = Number.prototype.toLocaleString;
+  Number.prototype.toLocaleString = function(locales, options) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToLocaleString.call(this, locales, options);
+  };
+  const origToFixed = Number.prototype.toFixed;
+  Number.prototype.toFixed = function(digits) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToFixed.call(this, digits);
+  };
+})();
+</script>
+<style id="ad-cls-shield">
+  .ad-bottom { min-height: 280px !important; }
+  .ad-bottom ins { min-height: 280px !important; }
 </style>
 </head>
 <body>
